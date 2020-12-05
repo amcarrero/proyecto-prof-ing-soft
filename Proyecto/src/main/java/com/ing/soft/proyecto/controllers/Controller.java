@@ -47,5 +47,5 @@ public class Controller {
 	public List<UsersPetitions> getPetitions() {
 		return repository.findAll();
 	}
-	
+		
 }
