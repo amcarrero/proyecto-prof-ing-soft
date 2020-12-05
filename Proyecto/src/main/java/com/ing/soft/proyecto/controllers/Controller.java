@@ -2,6 +2,7 @@ package com.ing.soft.proyecto.controllers;
 
 import java.util.List;
 
+import com.ing.soft.proyecto.email.EmailSender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,12 +23,13 @@ public class Controller {
 	@PostMapping(consumes = "Application/Json")
 	public UsersPetitions insertPetition(@RequestBody UsersPetitions petition) {
 		repository.insert(petition);
+		EmailSender emailSender = new EmailSender();
+		emailSender.enviarConGMail(petition.mail,"UrlComparator: Url recibida","La url "+petition.url+" va a ser monitorizada.\nUn saludo:3");
 		return petition;
 	}
 	
 	@GetMapping(produces = "Application/Json")
 	public List<UsersPetitions> getPetitions() {
-		
 		return repository.findAll();
 	}
 }
