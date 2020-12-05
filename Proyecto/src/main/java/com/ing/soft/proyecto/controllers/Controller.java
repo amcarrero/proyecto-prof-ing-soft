@@ -5,11 +5,6 @@ import java.util.List;
 
 import javax.mail.MessagingException;
 
-import com.ing.soft.proyecto.checkersDatabase.CheckExistPetition;
-import com.ing.soft.proyecto.model.UrlContent;
-import com.ing.soft.proyecto.repositories.UrlHashRepo;
-import com.ing.soft.proyecto.services.EmailSender;
-import com.ing.soft.proyecto.services.GetContentUrl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,8 +12,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ing.soft.proyecto.checkersDatabase.CheckExistPetition;
+import com.ing.soft.proyecto.model.UrlContent;
 import com.ing.soft.proyecto.model.UsersPetitions;
+import com.ing.soft.proyecto.repositories.UrlHashRepo;
 import com.ing.soft.proyecto.repositories.UserPetitionsRepo;
+import com.ing.soft.proyecto.services.EmailSender;
+import com.ing.soft.proyecto.services.GetContentUrl;
 
 @RestController
 @RequestMapping(value = "/petition")
@@ -46,9 +46,10 @@ public class Controller {
 			UrlContent url = new UrlContent(petition.url, content.hashCode());
 			urlRepository.insert(url);
 		}
-
 		return petition;
 	}
+
+
 	
 	@GetMapping(produces = "Application/Json")
 	public List<UsersPetitions> getPetitions() {
