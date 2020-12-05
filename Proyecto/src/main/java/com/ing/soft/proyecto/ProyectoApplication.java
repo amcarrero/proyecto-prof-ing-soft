@@ -1,4 +1,4 @@
-package com.PIngS.Proyecto;
+package com.ing.soft.proyecto;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,10 +16,6 @@ public class ProyectoApplication {
 		SpringApplication.run(ProyectoApplication.class, args);
 	}
 	
-	 @GetMapping("/hello")
-	 public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {
-	 return String.format("Hello %s!", name);
-	 }
 	 
      public @Bean MongoClientFactoryBean mongo() {
          MongoClientFactoryBean mongo = new MongoClientFactoryBean();
