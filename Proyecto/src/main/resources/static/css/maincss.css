@@ -5,7 +5,7 @@ form{
   background-color: #E7E7E7;
   margin: 0 auto;
 }
-
+​
 form input, form textarea{
   margin-bottom: 15px;
   font-family: "Roboto", sans-serif;
@@ -18,16 +18,13 @@ form input, form textarea{
   font-size: 1em;
   resize: horizontal; 
 }
-
+​
 form button {
-	display: block;
-	background-color: #0095eb;
-	padding: 10px 45px 10px 45px;
-	border: 0;
-	font-size: 1em; 
-	color: 	white;
+  display: block;
+  background-color: #0095eb;
+  padding: 10px 45px 10px 45px;
+  border: 0;
+  font-size: 1em; 
+  color:  white;
   font-family: "Roboto", sans-serif;
-}
-form button: hover{
-	background-color: #046193;
 }
