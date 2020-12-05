@@ -1,0 +1,15 @@
+version: '3.3'
+
+services:
+  app-db:
+    image: "mongo:4.0.1"
+    ports:
+      - "27017:27017"
+  app-app:
+    image: "app:local"
+    ports:
+      - "8080:8080"
+    links:
+      - app-db:mongo
+    depends_on:
+      - app-db
