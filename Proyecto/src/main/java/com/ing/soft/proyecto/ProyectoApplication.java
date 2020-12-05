@@ -16,7 +16,7 @@ public class ProyectoApplication {
 		SpringApplication.run(ProyectoApplication.class, args);
 	}
 	
-	 
+	   
      public @Bean MongoClientFactoryBean mongo() {
          MongoClientFactoryBean mongo = new MongoClientFactoryBean();
          mongo.setHost("mongo");
