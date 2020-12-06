@@ -4,17 +4,21 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.mongodb.core.MongoClientFactoryBean;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @SpringBootApplication
-@RestController
+@Controller
 public class ProyectoApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoApplication.class, args);
 	}
+	
+	@RequestMapping("/")
+	public String welcome() {
+	     return "formulario";
+	 }
 	
 	   
      public @Bean MongoClientFactoryBean mongo() {
