@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.ing.soft.proyecto.model.UsersPetitions;
 import com.ing.soft.proyecto.repositories.UserPetitionsRepo;
@@ -17,8 +18,8 @@ import com.ing.soft.proyecto.repositories.UserPetitionsRepo;
 @RequestMapping(value = "/petition")
 public class Controller {
 	
-	  @Autowired
-	  private UserPetitionsRepo repository;
+	@Autowired
+	private UserPetitionsRepo repository;
 
 	@PostMapping(consumes = "Application/Json")
 	public UsersPetitions insertPetition(@RequestBody UsersPetitions petition) {
@@ -32,4 +33,5 @@ public class Controller {
 	public List<UsersPetitions> getPetitions() {
 		return repository.findAll();
 	}
+	
 }
