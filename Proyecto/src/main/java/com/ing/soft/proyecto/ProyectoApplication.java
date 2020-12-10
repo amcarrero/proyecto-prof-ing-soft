@@ -23,7 +23,15 @@ public class ProyectoApplication {
 	   
      public @Bean MongoClientFactoryBean mongo() {
          MongoClientFactoryBean mongo = new MongoClientFactoryBean();
-         mongo.setHost("mongo");
+         String dbHost = System.getProperty("dbHost");
+         System.out.println(dbHost);
+         if(dbHost != null) {
+        	 mongo.setHost(System.getProperty("dbHost"));
+        	 mongo.setPort(Integer.valueOf(System.getProperty("dbPort"))); 
+         }
+         else
+        	 mongo.setHost("mongo");
+
          return mongo;
     }
 
