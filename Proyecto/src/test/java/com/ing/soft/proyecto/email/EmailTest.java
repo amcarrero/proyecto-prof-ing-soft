@@ -6,6 +6,8 @@ import javax.mail.MessagingException;
 
 import org.junit.jupiter.api.Test;
 
+import com.ing.soft.proyecto.services.EmailSender;
+
 class EmailTest {
 
 	@Test

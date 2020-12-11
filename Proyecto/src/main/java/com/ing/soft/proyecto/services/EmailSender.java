@@ -1,4 +1,4 @@
-package com.ing.soft.proyecto.email;
+package com.ing.soft.proyecto.services;
 
 import javax.mail.Message;
 import javax.mail.MessagingException;
