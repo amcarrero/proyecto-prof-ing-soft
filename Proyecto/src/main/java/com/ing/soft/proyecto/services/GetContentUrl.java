@@ -19,10 +19,11 @@ public class GetContentUrl {
         }
         //Retrieving the String from the String Buffer object
         String result = sb.toString();
-        //System.out.println(result);
+
+        System.out.println(result);
         //Removing the HTML tags
-        result = result.replaceAll("<[^>]*>", "");
-        //System.out.println("Contents of the web page: "+result);
+        //result = result.replaceAll("<[^>]*>", "");
+        System.out.println("Contents of the web page: "+result);
         return result;
     }
 }
