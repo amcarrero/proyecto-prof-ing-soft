@@ -30,8 +30,7 @@ public class Controller {
 	private UrlHashRepo urlRepository;
 
 	@PostMapping(consumes = "Application/Json")
-	public UsersPetitions insertPetition(@RequestBody UsersPetitions petition) throws  MessagingException, IOException {
-		//insert user petition in database
+	public UsersPetitions insertPetition(@RequestBody UsersPetitions petition) throws IOException,MessagingException {
 		repository.insert(petition);
 		// send email to confirm
 		EmailSender emailSender = new EmailSender();
