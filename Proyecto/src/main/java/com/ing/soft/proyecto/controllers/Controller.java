@@ -7,6 +7,8 @@ import com.ing.soft.proyecto.model.UrlContent;
 import com.ing.soft.proyecto.repositories.UrlHashRepo;
 import com.ing.soft.proyecto.services.EmailSender;
 import com.ing.soft.proyecto.services.GetContentUrl;
+import javax.mail.MessagingException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,7 +35,7 @@ public class Controller {
 	private UrlHashRepo urlRepository;
 
 	@PostMapping(consumes = "Application/Json")
-	public UsersPetitions insertPetition(@RequestBody UsersPetitions petition) throws IOException {
+	public UsersPetitions insertPetition(@RequestBody UsersPetitions petition) throws IOException, MessagingException {
 		//insert user petition in database
 		repository.insert(petition);
 		// send email to confirm
