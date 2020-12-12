@@ -14,16 +14,20 @@ import java.io.IOException;
 import java.util.List;
 
 @Component
-public class updateContents {
+public class UpdateContents {
 
     @Autowired
     public UrlHashRepo urlRepo;
     @Autowired
     public UserPetitionsRepo userPetitionsRepo;
 
+    public UpdateContents() {
+    }
+
     //se ejecuta cada media hora
-    @Scheduled(cron = "0 0/30 * ? * * *")
+    @Scheduled(cron = " 0 0/30 * ? * *")
     public void updateContents() throws IOException {
+        System.out.println("Monitorizando tareas .... -.-");
         List<UrlContent> listUrl = urlRepo.findAll();
 
         for (int i=0; i< listUrl.size();i++){
@@ -36,6 +40,7 @@ public class updateContents {
                 List<UsersPetitions> listUser = userPetitionsRepo.findByUrl(url);
                 EmailSender esender = new EmailSender();
                 for(int j =0; j< listUser.size();j++){
+                    System.out.println("Voy a enviar un correo a "+ listUser.get(j).mail );
                     esender.enviarConGMail(listUser.get(j).mail,"Url modificada","La url "+listUser.get(j).url+" ha sido modificada");
                 }
 
