@@ -13,6 +13,8 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 import java.util.List;
 
+import javax.mail.MessagingException;
+
 @Component
 public class updateContents {
 
@@ -23,7 +25,7 @@ public class updateContents {
 
     //se ejecuta cada media hora
     @Scheduled(cron = "0 0/30 * ? * * *")
-    public void updateContents() throws IOException {
+    public void updateContents() throws IOException, MessagingException {
         List<UrlContent> listUrl = urlRepo.findAll();
 
         for (int i=0; i< listUrl.size();i++){

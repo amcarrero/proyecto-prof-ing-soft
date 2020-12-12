@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +21,7 @@ import com.ing.soft.proyecto.repositories.UserPetitionsRepo;
 class ControllerTest2 {
 
 	@Test
-	void testController1() throws MessagingException {
+	void testController1() throws MessagingException, IOException {
 		Controller c = new Controller();
 		UserPetitionsRepo rep = mock(UserPetitionsRepo.class);
 		when(rep.insert(Mockito.anyIterable())).thenReturn(null);
