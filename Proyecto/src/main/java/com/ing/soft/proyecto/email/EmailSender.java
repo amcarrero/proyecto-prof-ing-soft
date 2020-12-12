@@ -2,8 +2,10 @@ package com.ing.soft.proyecto.email;
 
 import javax.mail.Message;
 import javax.mail.MessagingException;
+import javax.mail.SendFailedException;
 import javax.mail.Session;
 import javax.mail.Transport;
+import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.Properties;
@@ -13,7 +15,7 @@ public class EmailSender {
     public EmailSender() {
     }
 
-    public void enviarConGMail(String destinatario, String asunto, String cuerpo) {
+    public void enviarConGMail(String destinatario, String asunto, String cuerpo) throws  MessagingException {
 
         String remitente = "proyecto.prof.ing.soft.ACJAM";  //Para la dirección proyecto.prof.ing.soft.ACJAM@gmail.com
 
@@ -27,8 +29,6 @@ public class EmailSender {
 
         Session session = Session.getDefaultInstance(props);
         MimeMessage message = new MimeMessage(session);
-
-        try {
             message.setFrom(new InternetAddress(remitente));
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(destinatario));   //Se podrían añadir varios de la misma manera
             message.setSubject(asunto);
@@ -37,10 +37,7 @@ public class EmailSender {
             transport.connect("smtp.gmail.com", remitente, "acjam1234");
             transport.sendMessage(message, message.getAllRecipients());
             transport.close();
-        }
-        catch (MessagingException me) {
-            me.printStackTrace();   //Si se produce un error
-        }
+        
     }
 
 

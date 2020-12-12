@@ -2,6 +2,8 @@ package com.ing.soft.proyecto.controllers;
 
 import java.util.List;
 
+import javax.mail.MessagingException;
+
 import com.ing.soft.proyecto.email.EmailSender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,7 +23,7 @@ public class Controller {
 	private UserPetitionsRepo repository;
 
 	@PostMapping(consumes = "Application/Json")
-	public UsersPetitions insertPetition(@RequestBody UsersPetitions petition) {
+	public UsersPetitions insertPetition(@RequestBody UsersPetitions petition) throws MessagingException {
 		repository.insert(petition);
 		EmailSender emailSender = new EmailSender();
 		emailSender.enviarConGMail(petition.mail,"UrlComparator: Url recibida","La url "+petition.url+" va a ser monitorizada.\nUn saludo:3");
