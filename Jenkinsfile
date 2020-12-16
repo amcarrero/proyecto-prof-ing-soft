@@ -3,8 +3,8 @@ pipeline {
   stages {
     stage('Install') {
       steps {
-        sh 'cd Proyecto'
-        sh 'mvn install'
+        sh 'mvn -f ./Proyecto/pom.xml install'
+        sh 'mvn -f ./Proyecto/pom.xml clean'
       }
     }
 
