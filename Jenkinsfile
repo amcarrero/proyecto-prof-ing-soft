@@ -3,7 +3,8 @@ pipeline {
   stages {
     stage('Install') {
       steps {
-        sh 'cd Proyecto \\n mvn install'
+        sh 'cd Proyecto'
+        sh 'mvn install'
       }
     }
 
