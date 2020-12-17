@@ -7,17 +7,17 @@ import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
 
-@Testcontainers
+//@Testcontainers
 class AppITTest {
 	
 	private static final String DB_IMAGE = "mongo:4.2.1";
 	private static final int DB_PORT = 27017;
 
-	@Container
+	//@Container
 	private static GenericContainer<?> mongo = new GenericContainer<>(DB_IMAGE)
 			.withExposedPorts(DB_PORT);
 	
-	@BeforeAll
+	//@BeforeAll
 	static void  setup() {
         System.setProperty("dbHost", mongo.getHost());
         System.setProperty("dbPort", mongo.getMappedPort(DB_PORT)+"");
@@ -29,7 +29,7 @@ class AppITTest {
 	}
 
 
-	@Test
+	//@Test
 	void contextLoads() {
 	}
 
