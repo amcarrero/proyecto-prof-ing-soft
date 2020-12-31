@@ -27,7 +27,7 @@ public class UserController {
     private UserRepo userRepository;
 
     @PostMapping(consumes = "Application/Json")
-    public void insertUser(@RequestBody User user)  {
+    public int insertUser(@RequestBody User user)  {
         //se mira si el usuario ya existe, y si es se comprueba
         // la contraseña, si no existe el usuario se crea el usuario
         String userEmail = user.getEmail();
@@ -42,11 +42,13 @@ public class UserController {
                 currentUser = userEmail;
             }else{
                 //el usuario se registro mal
+                return 1;
             }
         }else {
             //usuario nuevo
             user.setPassword((user.getPassword()+"").hashCode());
             userRepository.insert(user);
         }
+        return 0;
     }
 }
