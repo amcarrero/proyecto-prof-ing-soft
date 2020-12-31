@@ -45,6 +45,7 @@ public class UserController {
             }
         }else {
             //usuario nuevo
+            user.setPassword((user.getPassword()+"").hashCode());
             userRepository.insert(user);
         }
     }
