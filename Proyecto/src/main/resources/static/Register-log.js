@@ -6,13 +6,15 @@ function sendEmail(){
 	var psw = document.getElementById("psw");
 	console.log(email);
 	var postBody='{ "email":"'+ email.value+'", "pwd": "'+psw.value+'"}';
-	var postUrl="http://localhost:8080//formulario-url";
+	var postUrl="http://localhost:8080/user";
 	fetch(postUrl,{ 
 		method: 'POST',body: postBody, headers:{
 			'Content-Type': 'Application/Json'
 		}
-	}).catch(error=> console.error("error :",error))
-	.then(response => console.log('Success :', response)); 
+	})
+	.then(response => response.json()) 
+	.then(json => console.log(json))
+	.catch(err => console.log(err));
 
 	location.href='formulario-url';
 
