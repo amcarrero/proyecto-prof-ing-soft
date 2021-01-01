@@ -16,7 +16,7 @@ import java.util.List;
 import javax.mail.MessagingException;
 
 @Component
-public class UpdateContents {
+class UpdateContents {
 
     @Autowired
     public UrlHashRepo urlRepo;
@@ -28,7 +28,7 @@ public class UpdateContents {
 
     //se ejecuta cada media hora
     @Scheduled(cron = " 0 0/30 * ? * *")
-    public void updateContents() throws IOException {
+    public void updateContents() throws IOException, MessagingException {
         System.out.println("Monitorizando tareas .... -.-");
         List<UrlContent> listUrl = urlRepo.findAll();
 
