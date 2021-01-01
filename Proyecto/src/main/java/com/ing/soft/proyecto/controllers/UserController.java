@@ -4,7 +4,7 @@ package com.ing.soft.proyecto.controllers;
 import com.ing.soft.proyecto.model.InsertUserResponse;
 import com.ing.soft.proyecto.model.User;
 import com.ing.soft.proyecto.repositories.UserRepo;
-import com.ing.soft.proyecto.variables.IntegrationVariables;
+import com.ing.soft.proyecto.variables.CurrentUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(value = "/user")
-public class UserController extends IntegrationVariables {
+public class UserController extends CurrentUser {
 
     @Autowired
     private UserRepo userRepository;

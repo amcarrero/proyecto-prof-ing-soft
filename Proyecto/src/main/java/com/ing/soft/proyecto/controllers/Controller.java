@@ -9,7 +9,7 @@ import com.ing.soft.proyecto.services.EmailSender;
 import com.ing.soft.proyecto.services.GetContentUrl;
 import javax.mail.MessagingException;
 
-import com.ing.soft.proyecto.variables.IntegrationVariables;
+import com.ing.soft.proyecto.variables.CurrentUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,7 +26,7 @@ import com.ing.soft.proyecto.services.GetContentUrl;
 
 @RestController
 @RequestMapping(value = "/petition")
-public class Controller extends IntegrationVariables {
+public class Controller extends CurrentUser {
 	
 	@Autowired
 	private UserPetitionsRepo repository;
@@ -38,7 +38,7 @@ public class Controller extends IntegrationVariables {
 	public UsersPetitions insertPetition(@RequestBody UsersPetitions petition) throws IOException, MessagingException {
 		petition.setMail(currentUser);
 		//se comprueba si el usuario ha solicitado ya esta peticion
-
+		System.out.println("el usuario es"+currentUser);
 		if(!checkIfAlreadyExist(petition.url, currentUser)){
 			//insert user petition in database
 			repository.insert(petition);
@@ -50,6 +50,8 @@ public class Controller extends IntegrationVariables {
 			String content = urlContent.getContentUrl(petition.getUrl());
 			UrlContent url = new UrlContent(petition.url, content.hashCode());
 			urlRepository.insert(url);
+		}else{
+			System.out.println("Esta petición ya se ha realizado");
 		}
 
 		return petition;
