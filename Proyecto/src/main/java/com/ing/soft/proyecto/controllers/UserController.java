@@ -28,16 +28,18 @@ public class UserController extends IntegrationVariables {
         if((newUser = userRepository.findByEmail(userEmail)) != null){
             //el usuario existe, por lo que se comprueba la contraseña.
             int passStored = newUser.getPassword();
-            int hashPass = (""+passStored).hashCode();
+            int hashPass = (""+userPassword).hashCode();
             if(hashPass == passStored){
                 //misma contraseña, por lo que bien registrado
                 currentUser = userEmail;
             }else{
                 //el usuario se registro mal
+                currentUser = "";
                 return new InsertUserResponse(1);
             }
         }else {
             //usuario nuevo
+            currentUser = userEmail;
             user.setPassword((user.getPassword()+"").hashCode());
             userRepository.insert(user);
         }
