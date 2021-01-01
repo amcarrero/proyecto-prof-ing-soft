@@ -1,12 +1,12 @@
 package com.ing.soft.proyecto.model;
 
-public class InserUserResponse {
+public class InsertUserResponse {
     public int result;
 
-    public InserUserResponse() {
+    public InsertUserResponse() {
     }
 
-    public InserUserResponse(int result) {
+    public InsertUserResponse(int result) {
         this.result = result;
     }
 
