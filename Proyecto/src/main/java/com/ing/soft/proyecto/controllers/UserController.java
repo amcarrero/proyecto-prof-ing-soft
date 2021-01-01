@@ -2,6 +2,7 @@ package com.ing.soft.proyecto.controllers;
 
 
 import com.ing.soft.proyecto.checkersDatabase.CheckExistPetition;
+import com.ing.soft.proyecto.model.InserUserResponse;
 import com.ing.soft.proyecto.model.UrlContent;
 import com.ing.soft.proyecto.model.User;
 import com.ing.soft.proyecto.model.UsersPetitions;
@@ -26,7 +27,7 @@ public class UserController extends IntegrationVariables {
     private UserRepo userRepository;
 
     @PostMapping(consumes = "Application/Json")
-    public int insertUser(@RequestBody User user)  {
+    public InserUserResponse insertUser(@RequestBody User user)  {
         //se mira si el usuario ya existe, y si es se comprueba
         // la contraseña, si no existe el usuario se crea el usuario
         String userEmail = user.getEmail();
@@ -41,13 +42,13 @@ public class UserController extends IntegrationVariables {
                 currentUser = userEmail;
             }else{
                 //el usuario se registro mal
-                return 1;
+                return new InserUserResponse(1);
             }
         }else {
             //usuario nuevo
             user.setPassword((user.getPassword()+"").hashCode());
             userRepository.insert(user);
         }
-        return 0;
+        return new InserUserResponse(0);
     }
 }
