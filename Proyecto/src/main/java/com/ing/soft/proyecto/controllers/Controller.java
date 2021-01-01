@@ -10,6 +10,7 @@ import com.ing.soft.proyecto.services.EmailSender;
 import com.ing.soft.proyecto.services.GetContentUrl;
 import javax.mail.MessagingException;
 
+import com.ing.soft.proyecto.variables.IntegrationVariables;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,7 +23,7 @@ import com.ing.soft.proyecto.repositories.UserPetitionsRepo;
 
 @RestController
 @RequestMapping(value = "/petition")
-public class Controller {
+public class Controller extends IntegrationVariables {
 	
 	@Autowired
 	private UserPetitionsRepo repository;
@@ -31,7 +32,8 @@ public class Controller {
 	private UrlHashRepo urlRepository;
 
 	@PostMapping(consumes = "Application/Json")
-	public UsersPetitions insertPetition(@RequestBody UsersPetitions petition) throws IOException {
+	public UsersPetitions insertPetition(@RequestBody UsersPetitions petition) throws IOException, MessagingException {
+		petition.setMail(currentUser);
 		//se comprueba si el usuario ha solicitado ya esta peticion
 		CheckExistPetition ch = new CheckExistPetition();
 		if(!ch.checkIfAlreadyExist(petition.url,petition.mail)){

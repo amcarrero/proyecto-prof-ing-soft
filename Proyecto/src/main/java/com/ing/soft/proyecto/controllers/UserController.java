@@ -9,6 +9,7 @@ import com.ing.soft.proyecto.repositories.UrlHashRepo;
 import com.ing.soft.proyecto.repositories.UserRepo;
 import com.ing.soft.proyecto.services.EmailSender;
 import com.ing.soft.proyecto.services.GetContentUrl;
+import com.ing.soft.proyecto.variables.IntegrationVariables;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,9 +20,7 @@ import java.io.IOException;
 
 @RestController
 @RequestMapping(value = "/user")
-public class UserController {
-
-    private String currentUser = "";
+public class UserController extends IntegrationVariables {
 
     @Autowired
     private UserRepo userRepository;
