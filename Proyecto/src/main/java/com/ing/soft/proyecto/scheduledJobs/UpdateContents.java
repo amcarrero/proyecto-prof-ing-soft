@@ -16,7 +16,7 @@ import java.util.List;
 import javax.mail.MessagingException;
 
 @Component
-public class UpdateContents {
+class UpdateContents {
 
     @Autowired
     public UrlHashRepo urlRepo;
