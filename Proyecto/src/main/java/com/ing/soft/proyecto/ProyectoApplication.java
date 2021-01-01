@@ -17,8 +17,13 @@ public class ProyectoApplication {
 	
 	@RequestMapping("/")
 	public String welcome() {
-	     return "formulario";
+	     return "register";
 	 }
+	@RequestMapping("/formulario-url")
+	public String welcome2() {
+	     return "formulario-url";
+	 }
+	
 	
 	   
      public @Bean MongoClientFactoryBean mongo() {
