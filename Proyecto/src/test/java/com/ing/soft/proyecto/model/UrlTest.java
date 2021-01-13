@@ -39,7 +39,7 @@ class UrlTest {
 		assertThrows(Exception.class,()->{
 			
 			
-			//urlc.updateContents();
+			urlc.updateContents();
 		});
 	}
 	@Test

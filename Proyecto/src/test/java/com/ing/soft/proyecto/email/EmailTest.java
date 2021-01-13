@@ -18,7 +18,7 @@ class EmailTest {
 	@Test
 	void test2() {
 		EmailSender es= new EmailSender();
-		assertDoesNotThrow(()->{es.enviarConGMail("sujetoA@gmail.com", "Codigo Rojo", "Terminator");});
+		assertThrows(MessagingException.class,()->{es.enviarConGMail("sujetoA@gmail.com", "Codigo Rojo", "Terminator");});
 	}
 
 }
