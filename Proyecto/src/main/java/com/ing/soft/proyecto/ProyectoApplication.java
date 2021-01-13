@@ -4,9 +4,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.mongodb.core.MongoClientFactoryBean;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
 @Controller
@@ -19,21 +22,17 @@ public class ProyectoApplication {
 	
 	@RequestMapping("/")
 	public String welcome() {
-	     return "formulario";
+	     return "register";
+	 }
+	@RequestMapping("/formulario-url")
+	public String welcome2() {
+	     return "formulario-url";
 	 }
 	
-	   
+	
      public @Bean MongoClientFactoryBean mongo() {
          MongoClientFactoryBean mongo = new MongoClientFactoryBean();
-         String dbHost = System.getProperty("dbHost");
-         System.out.println(dbHost);
-         if(dbHost != null) {
-        	 mongo.setHost(System.getProperty("dbHost"));
-        	 mongo.setPort(Integer.valueOf(System.getProperty("dbPort"))); 
-         }
-         else
-        	 mongo.setHost("mongo");
-
+         mongo.setHost("mongo");
          return mongo;
     }
 

@@ -4,17 +4,13 @@
     <meta charset="UTF-8">
     <title>Home Page</title>
     <link href="css/maincss.css" rel="stylesheet" type="text/css">
-    <script type="text/javascript" src="sendEmail.js"></script>
-	 
-
+    <script type="text/javascript" src="sendUrl.js"></script>
 </head>
 <body>
-<form >
+<form  >
     <label for="url">URL</label><br>
     <input type="url" id="url" name="url"><br>
-    <label for="email">Email</label><br>
-    <input type="email" id="email" name="email"><br><br>
-    <input type="button" value="submit" id='Submit' onclick="post()" >
+	<input type="button" value="submit" id='Submit' onclick="sendUrl()">
 </form>
 </body>
 </html>
